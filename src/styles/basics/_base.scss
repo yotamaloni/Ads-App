@@ -25,19 +25,10 @@ body {
   font-size: 0.875rem;
 }
 
-.all-container {
-  height: 100vh;
-}
-.main-container {
-  height: 100vh;
-}
-
-img {
-  width: 100%;
-}
-
-h1 {
-  font-size: rem(50px);
+h1,
+h2.h3.h4 {
+  margin: 0;
+  padding: 0;
 }
 
 p {
@@ -45,21 +36,18 @@ p {
   max-width: 50ch;
 }
 
-.remove-btn {
-  position: absolute;
-  top: 2%;
-  right: 2%;
-}
-
-.loader-page {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 input {
   cursor: pointer;
-}
+  width: 100%;
+  border: none;
+  box-shadow: 0 1px 0 #091e4240;
+  border-radius: 3px;
+  min-height: 32px;
+  padding: 0 10px;
 
+  &:focus {
+    outline: 2px solid #0079bf;
+    border: none;
+    border-radius: 3px;
+  }
+}

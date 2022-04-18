@@ -1,5 +1,5 @@
 import { AppHome } from "./pages/app-home.jsx";
-import { BoardApp } from "./pages/board-app.jsx";
+import { AdsApp } from "./pages/ads-app.jsx";
 
 const routes = [
   {
@@ -8,8 +8,8 @@ const routes = [
     exact: true,
   },
   {
-    path: "/board",
-    component: BoardApp,
+    path: "/ads",
+    component: AdsApp,
     exact: true,
   },
 ];
