@@ -12,7 +12,7 @@ export const AdsList = (props) => {
             </li>
             {
                 props.ads.map(ad => {
-                    return <li key={ad.id}><AdPreview ad={ad} /></li>
+                    return <li key={ad._id}><AdPreview ad={ad} /></li>
                 })
             }
         </ul >

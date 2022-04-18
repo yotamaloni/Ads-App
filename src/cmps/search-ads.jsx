@@ -19,7 +19,7 @@ export const SearchAds = (props) => {
 
     return (
         <section className="search-ads form-container">
-            <form {...formProps} >
+            <form {...formProps} onSubmit={(ev) => ev.preventDefault()} >
                 <label>
                     <input  {...register('adsName', undefined, 'Search for ads')}
                     />

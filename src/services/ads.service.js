@@ -16,13 +16,14 @@ async function query(domainName, filterBy, sortBy) {
   //   filterBy,
   //   sortBy
   // );
-  // if (!filterBy) _saveCurrDomain(domain);
   // return domain;
   const data = {
     filterBy,
     sortBy,
   };
-  return httpService.get(`domain/${domainName}`, { data });
+  const domain = await httpService.get(`domain/${domainName}`, { data });
+  // if (!filterBy) _saveCurrDomain(domain);
+  return domain;
 }
 
 function getCurrDomain() {
