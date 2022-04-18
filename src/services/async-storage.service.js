@@ -9,13 +9,31 @@ export const storageService = {
   remove,
 };
 
-function query(entityType, entityName, delay = 1000) {
+var timeoutId = null;
+
+function query(entityType, entityName, filterBy, sortBy, delay = 100) {
   var entities = JSON.parse(localStorage.getItem(entityType)) || domains;
   _save(entityType, entities);
-  const domain = entities.find((entity) => entity.name === entityName);
+  const domain = entities.find(
+    (entity) => entity.name.toLowerCase() === entityName.toLowerCase()
+  );
+
+  if (filterBy) {
+    domain.ads = domain.ads.filter((ad) =>
+      ad.name.toLowerCase().includes(filterBy.title.toLowerCase())
+    );
+  }
+
+  domain.ads.sort((ad1, ad2) => {
+    if (sortBy.type === "count") return (ad2.count - ad1.count) * sortBy.order;
+    const name1 = ad1.name.toLowerCase();
+    const name2 = ad2.name.toLowerCase();
+    return 1;
+  });
 
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
+    clearTimeout();
+    timeoutId = setTimeout(() => {
       if (!domain) reject("OOOOPs");
       resolve(domain);
     }, delay);

@@ -7,16 +7,19 @@ import { DomainHeader } from "../cmps/domain-header.jsx"
 import { SearchAds } from "../cmps/search-ads.jsx"
 import { AdsList } from "../cmps/ads-list.jsx"
 import { LocalDining } from "@material-ui/icons";
+// import { CircularIndeterminate } from '../cmps/loader.jsx'
+
 
 export const AdsApp = () => {
     const [domain, setDomain] = useState(null)
     const [filterBy, setFilterBy] = useState(null)
+    const [sortBy, setSortBy] = useState({ type: 'count', order: 1 })
     const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
         const domain = adsService.getCurrDomain()
         if (domain) setDomain(domain)
-        else updateDomain('ynet')
+        else updateDomain('ynet', filterBy, sortBy)
     }, [])
 
     const onUpdateDomain = (domainName) => {
@@ -26,36 +29,39 @@ export const AdsApp = () => {
     }
 
     const updateDomain = async (domainName) => {
-        const domain = await adsService.query(domainName)
+        const domain = await adsService.query(domainName, filterBy, sortBy)
         setDomain(domain)
     }
 
-    const onFilterBy = (filterBy) => {
-        setFilterBy(filterBy)
+    const onUpdateFilterBy = async (adsTitle) => {
+        let filterBy
+        if (adsTitle) filterBy = { title: adsTitle }
+        else filterBy = null
+        const domainFiltered = await adsService.query(domain.name, filterBy, sortBy)
+        setDomain(domainFiltered)
     }
-    if (isLoading) return (
-        <section className="ads-app">
-            Loading
-        </section >
-    )
-    if (!domain) return <div>Loading</div>
+
+    const onUpdateSortBy = async (sortByType) => {
+        let order = 1
+        if (sortBy.type === sortByType) {
+            order = sortBy.order * -1
+        }
+        const newSortBy = { type: sortByType, order }
+        setSortBy(newSortBy)
+        const domainSorted = await adsService.query(domain.name, filterBy, newSortBy)
+        setDomain(domainSorted)
+    }
+
+    if (!domain) return <div className='loader-page'>
+        {/* <CircularIndeterminate /> */}
+        loading
+    </div>
     return (
         <section className="ads-app">
             <SearchDomain onUpdateDomain={onUpdateDomain} />
             <DomainHeader domain={domain} />
-            <SearchAds onFilterBy={onFilterBy} />
-            <AdsList ads={domain.ads} />
+            <SearchAds onUpdateFilterBy={onUpdateFilterBy} />
+            <AdsList ads={domain.ads} onUpdateSortBy={onUpdateSortBy} sortBy={sortBy} />
         </section >
     )
 }
-
-
-const ads = [
-    { id: 2, name: "google.com", count: 102 },
-    { id: 3, name: "yahoo.com", count: 2 },
-    { id: 4, name: "yotam.com", count: 234 },
-    { id: 5, name: "gmail.com", count: 3 },
-    { id: 6, name: "david.com", count: 234 },
-    { id: 7, name: "shabi.com", count: 34 },
-    { id: 8, name: "momo.com", count: 434 },
-];

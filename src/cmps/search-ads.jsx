@@ -1,12 +1,14 @@
 import { useFormRegister } from '../hooks/useFormRegister'
 import { adsService } from '../services/ads.service'
 
-const onSubmitAds = ({ ads }) => {
-}
 
 
-export const SearchAds = () => {
 
+export const SearchAds = (props) => {
+
+    const onSubmitAds = ({ adsName }) => {
+        props.onUpdateFilterBy(adsName)
+    }
     const [register] = useFormRegister({
         model: '',
         type: '',
@@ -14,11 +16,12 @@ export const SearchAds = () => {
 
     const formProps = { className: 'search-ads-form' }
 
+
     return (
         <section className="search-ads form-container">
             <form {...formProps} >
                 <label>
-                    <input  {...register('ads', undefined, 'Search for ads')}
+                    <input  {...register('adsName', undefined, 'Search for ads')}
                     />
                 </label>
             </form>

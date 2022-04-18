@@ -17,9 +17,9 @@
 
     >:first-child {
         background-color: lightgreen;
-
         >* {
             font-weight: 700;
+            cursor: pointer;
         }
     }
 

@@ -9,12 +9,20 @@ export const adsService = {
   getCurrDomain,
 };
 
-async function query(domainName, filterBy = null) {
-  const domain = await storageService.query("domain", domainName);
-  _saveCurrDomain(domain);
-  return domain;
+async function query(domainName, filterBy, sortBy) {
+  // const domain = await storageService.query(
+  //   "domain",
+  //   domainName,
+  //   filterBy,
+  //   sortBy
+  // );
+  // if (!filterBy) _saveCurrDomain(domain);
   // return domain;
-  // return httpService.get(`name`, { filterBy });
+  const data = {
+    filterBy,
+    sortBy,
+  };
+  return httpService.get(`domain/${domainName}`, { data });
 }
 
 function getCurrDomain() {
