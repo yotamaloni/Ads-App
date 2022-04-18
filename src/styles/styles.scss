@@ -1,0 +1,14 @@
+// Setup
+@import 'setup/variables';
+@import 'setup/typography';
+
+// Basics
+@import 'basics/helpers';
+@import 'basics/layout';
+@import 'basics/base';
+@import 'basics/buttons';
+
+// General Componentss
+@import 'cmps/app-home';
+@import 'cmps/app-header';
+@import 'cmps/app-footer';

@@ -1,0 +1,66 @@
+// flex helpers
+
+.flex {
+  display: flex;
+
+  > *.full {
+    flex: 1;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.row {
+    flex-direction: row;
+  }
+
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.justify-between {
+    justify-content: space-between;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.align-end {
+    align-items: flex-end;
+  }
+
+  &.align-start {
+    align-items: flex-start;
+  }
+
+  &.default-gap {
+    gap: 10px;
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+}
+
+
+// Clean-List
+
+.clean-list {
+  list-style: none;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+// Clean-Link
+
+.clean-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.clickable {
+  cursor: pointer;
+}
