@@ -1,0 +1,26 @@
+.ads {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: lightblue;
+    border-radius: 5px;
+
+    >* {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 100px;
+        height: 50px;
+        background-color: rgb(226, 197, 197);
+        padding: 0 20px;
+    }
+
+    >:first-child {
+        background-color: lightgreen;
+
+        >* {
+            font-weight: 700;
+        }
+    }
+
+}
