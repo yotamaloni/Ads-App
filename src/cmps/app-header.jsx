@@ -6,7 +6,7 @@ export function AppHeader() {
             <div className='main-nav'>
                 <NavLink activeClassName="selected" className="clean-link" exact to='/'>HOME</NavLink>
                 |
-                <NavLink activeClassName="selected" className="clean-link" exact to='/domain/msn.com'>ADS</NavLink>
+                <NavLink activeClassName="selected" className="clean-link" exact to='/domain/msn.com'>ADVERTISERS</NavLink>
             </div>
             <Link to='/' className='title-container clean-link'>
                 Ads.txt Crawler

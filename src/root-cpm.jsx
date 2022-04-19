@@ -17,7 +17,10 @@ export class RootCmp extends React.Component {
                         {routes.map(route => <Route key={route.path} exact={route.exact} component={route.component} path={route.path} />)}
                     </Switch>
                 </main>
-                <AppFooter />
+                <div className='footer-container'>
+                    <AppFooter />
+                </div>
+
             </div>
         )
     }

@@ -1,5 +1,58 @@
 .app-footer {
-    padding: 10px;
-    // height: $footer-height;
+    height: 100%;
+    padding: 0 10px;
     background-color: lightblue;
+    flex-direction: column;
+
+    .social-media-container {
+        display: flex;
+        gap: 15px;
+
+        >* {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+
+            &.social-media-icon-container {
+                transition: color 0.2s ease;
+                width: 30px;
+            }
+
+            &.facebook {
+                &:hover {
+                    color: #4267B2;
+                }
+            }
+
+            &.twitter {
+                &:hover {
+                    color: #1DA1F2;
+                }
+            }
+
+            &.youtube {
+                &:hover {
+                    color: #FF0000;
+                }
+            }
+        }
+
+        .title {
+            p {
+                margin: 0;
+                font-size: 1.2em;
+                cursor: default;
+            }
+        }
+    }
+
+    .rights-container {
+        p {
+            margin: 0;
+        }
+
+    }
 }

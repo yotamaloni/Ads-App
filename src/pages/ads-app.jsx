@@ -48,9 +48,6 @@ export const AdsApp = (props) => {
             updatedFilterBy = { currPage: value, title }
         }
         setFilterBy(updatedFilterBy)
-        console.log("🟡 ~ updatedFilterBy", updatedFilterBy)
-        // if (adsTitle) filterBy = { title: adsTitle, currPage }
-        // else filterBy = null
         const domainFiltered = await domainService.query(domain.name, updatedFilterBy, sortBy)
         setDomain(domainFiltered)
     }
