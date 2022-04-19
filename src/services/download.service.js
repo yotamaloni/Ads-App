@@ -19,10 +19,12 @@ async function downloadFile(domain) {
 function getCsvData(domain) {
   let csvData = [
     ["Domain Name", domain.name],
+    ["Parse time", domain.parseTime],
+    ["Number of advertisers", domain.numOfAds],
     ["", ""],
     ["Advertiser's Name", "Count"],
   ];
-  domain.ads.forEach((ad) => {
+  domain.allAds.forEach((ad) => {
     csvData.push([ad.name, ad.count]);
   });
   return csvData;

@@ -1,10 +1,9 @@
 .app-header {
+    font-family: mochiy;
     height: 100%;
     padding: 0 10px;
     background-color: $clr2;
     color: $clr1;
-    justify-content: start;
-    align-items: center;
 
     >* {
         height: 100%;
@@ -14,6 +13,7 @@
     }
 
     .main-nav {
+
         display: flex;
         gap: 10px;
 
@@ -24,7 +24,6 @@
             justify-content: center;
             align-items: center;
             transition: background-color 0.5s ease;
-            font-weight: 700;
 
             &:hover {
                 background-color: lighten($color: $clr2, $amount: 20%);
@@ -32,14 +31,7 @@
 
             &.selected {
                 color: lightgreen;
-
             }
         }
     }
-
-    .title-container {
-        font-size: 1.1em;
-        font-family: mochiy;
-    }
-
 }

@@ -2,7 +2,7 @@ import { domainService } from '../services/domain.service'
 
 export const PagesList = (props) => {
     const { domain, onUpdateFilterBy, currPage } = props
-    const numberOfPages = Math.ceil(domain.totalAds / domain.maxItemsInPage)
+    const numberOfPages = Math.ceil(domain.numOfAds / domain.maxItemsInPage)
     const pages = domainService.getPages(numberOfPages)
     return (
         <section className="page-list-container">

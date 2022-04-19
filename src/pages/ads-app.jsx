@@ -72,12 +72,13 @@ export const AdsApp = (props) => {
             <SearchDomain onUpdateDomain={onUpdateDomain} />
             <DomainHeader domain={domain} />
             <SearchAds onUpdateFilterBy={onUpdateFilterBy} />
-            <AdsList ads={domain.ads} onUpdateSortBy={onUpdateSortBy} sortBy={sortBy} />
-            <PagesList domain={domain} onUpdateFilterBy={onUpdateFilterBy} currPage={filterBy.currPage} />
-            {domain.ads.length === 0 &&
+            <AdsList ads={domain.adsToDisplay} onUpdateSortBy={onUpdateSortBy} sortBy={sortBy} />
+            {domain.adsToDisplay.length === 0 ?
                 <div className="failure-msg">
                     No advertisers to display
                 </div>
+                :
+                <PagesList domain={domain} onUpdateFilterBy={onUpdateFilterBy} currPage={filterBy.currPage} />
             }
         </section >
     )

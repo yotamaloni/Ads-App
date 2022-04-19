@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 
-
 export const AppHome = () => {
     const IMG_URL = "https://res.cloudinary.com/dnft2vfvz/image/upload/v1650378131/ies6doefs0lq5vkihm0j.png"
     return (

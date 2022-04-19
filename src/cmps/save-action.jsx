@@ -1,12 +1,14 @@
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 import { downloadService } from "../services/download.service"
 
 export const SaveAction = (props) => {
-    const { domain } = props
-    const csvData = downloadService.getCsvData(domain)
+    const domainToDownload = { ...props.domain }
+    delete domainToDownload.adsToDisplay
+    delete domainToDownload.maxItemsInPage
+    const csvData = downloadService.getCsvData(domainToDownload)
 
     const downloadJsonFile = async () => {
-        downloadService.downloadFile(domain)
+        downloadService.downloadFile(domainToDownload)
     }
 
     return (
