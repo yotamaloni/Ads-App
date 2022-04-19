@@ -8,7 +8,7 @@ const routes = [
     exact: true,
   },
   {
-    path: "/ads",
+    path: "/domain/:name",
     component: AdsApp,
     exact: true,
   },

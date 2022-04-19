@@ -1,9 +1,10 @@
 
 export const AdPreview = (props) => {
+    const URL = `https://www.${props.ad.name}`
     return (
         <section className="ad-preview">
-            <div>{props.ad.name}</div>
-            <div>{props.ad.count}</div>
+            <a target="_blank" href={URL} className="costume-link">{props.ad.name}</a>
+            <div className="count-container">{props.ad.count}</div>
         </section>
     )
 }

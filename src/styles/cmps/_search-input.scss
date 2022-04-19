@@ -1,14 +1,17 @@
 .search-ads {
     width: 25%;
     min-width: 100px;
-
-    form {}
 }
 
 .search-domain {
     width: 100%;
 
-    form {}
+    form {
+        background-color: white;
+        box-shadow: 0 1px 0 #091e4240;
+        align-items: center;
+        padding-inline-start: 10px;
+    }
 }
 
 .form-container {

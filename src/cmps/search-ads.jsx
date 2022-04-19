@@ -1,8 +1,4 @@
 import { useFormRegister } from '../hooks/useFormRegister'
-import { adsService } from '../services/ads.service'
-
-
-
 
 export const SearchAds = (props) => {
 

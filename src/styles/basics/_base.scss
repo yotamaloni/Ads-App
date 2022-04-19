@@ -6,10 +6,6 @@
   box-sizing: border-box;
 }
 
-::selection {
-  background-color: lighten($clr4, 20%);
-  color: $clr2;
-}
 
 html {
   line-height: 2;
@@ -46,9 +42,9 @@ input {
   padding: 0 10px;
 
   &:focus {
-    outline: 2px solid #0079bf;
-    border: none;
-    border-radius: 3px;
+      outline: 2px solid #0079bf;
+      border: none;
+      border-radius: 3px;
   }
 }
 
@@ -58,4 +54,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.clickable{
+  cursor: pointer;
 }

@@ -1,43 +1,46 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom'
 
-import { adsService } from '../services/ads.service'
+import { domainService } from '../services/domain.service'
 
 import { SearchDomain } from "../cmps/search-domain.jsx"
 import { DomainHeader } from "../cmps/domain-header.jsx"
 import { SearchAds } from "../cmps/search-ads.jsx"
 import { AdsList } from "../cmps/ads-list.jsx"
-import { LocalDining } from "@material-ui/icons";
-// import { CircularIndeterminate } from '../cmps/loader.jsx'
+import CircularIndeterminate from '../cmps/loader.jsx'
 
 
-export const AdsApp = () => {
+
+export const AdsApp = (props) => {
+    const history = useHistory()
+
     const [domain, setDomain] = useState(null)
     const [filterBy, setFilterBy] = useState(null)
     const [sortBy, setSortBy] = useState({ type: 'count', order: 1 })
     const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
-        const domain = adsService.getCurrDomain()
-        if (domain) setDomain(domain)
-        else updateDomain('ynet', filterBy, sortBy)
+        const { name } = props.match.params;
+        onUpdateDomain(name)
     }, [])
 
-    const onUpdateDomain = (domainName) => {
+    const onUpdateDomain = async (domainName) => {
         setLoading(true)
-        updateDomain(domainName)
+        await updateDomain(domainName)
         setLoading(false)
     }
 
     const updateDomain = async (domainName) => {
-        const domain = await adsService.query(domainName, filterBy, sortBy)
+        const domain = await domainService.query(domainName, filterBy, sortBy)
         setDomain(domain)
+        history.push(`/domain/${domainName}`)
     }
 
     const onUpdateFilterBy = async (adsTitle) => {
         let filterBy
         if (adsTitle) filterBy = { title: adsTitle }
         else filterBy = null
-        const domainFiltered = await adsService.query(domain.name, filterBy, sortBy)
+        const domainFiltered = await domainService.query(domain.name, filterBy, sortBy)
         setDomain(domainFiltered)
     }
 
@@ -48,20 +51,29 @@ export const AdsApp = () => {
         }
         const newSortBy = { type: sortByType, order }
         setSortBy(newSortBy)
-        const domainSorted = await adsService.query(domain.name, filterBy, newSortBy)
+        const domainSorted = await domainService.query(domain.name, filterBy, newSortBy)
         setDomain(domainSorted)
     }
 
-    if (!domain) return <div className='loader-page'>
-        {/* <CircularIndeterminate /> */}
-        loading
+    if (!domain || isLoading) return <div className='loader-page'>
+        <CircularIndeterminate />
     </div>
     return (
         <section className="ads-app">
+
             <SearchDomain onUpdateDomain={onUpdateDomain} />
-            <DomainHeader domain={domain} />
-            <SearchAds onUpdateFilterBy={onUpdateFilterBy} />
-            <AdsList ads={domain.ads} onUpdateSortBy={onUpdateSortBy} sortBy={sortBy} />
+            {domain.ads.length > 0 ?
+                <React.Fragment>
+                    <DomainHeader domain={domain} />
+                    <SearchAds onUpdateFilterBy={onUpdateFilterBy} />
+                    <AdsList ads={domain.ads} onUpdateSortBy={onUpdateSortBy} sortBy={sortBy} />
+                </React.Fragment>
+                :
+                <div className="failure-msg">
+                    Failed to parse Ads.txt
+                </div>
+            }
+
         </section >
     )
 }

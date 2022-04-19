@@ -5,7 +5,8 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    &:hover {
-        background-color: lightgray;
+
+    .count-container {
+        width: 100px;
     }
 }

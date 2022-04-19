@@ -1,9 +1,15 @@
 .domain-header {
-    background-color: lightblue;
-    padding: 0 10px;
-    height: 30px;
+    background-color: $clr2;
+    color: $clr1;
+    padding: 10px 10px;
+    min-height: 50px;
     border-radius: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    flex-wrap: wrap;
+    gap: 20px;
 
     >* {
         span {

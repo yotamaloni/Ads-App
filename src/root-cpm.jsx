@@ -9,7 +9,9 @@ export class RootCmp extends React.Component {
     render() {
         return (
             <div className='all-container' >
-                <AppHeader />
+                <div className='header-container'>
+                    <AppHeader />
+                </div>
                 <main className='main-container'>
                     <Switch>
                         {routes.map(route => <Route key={route.path} exact={route.exact} component={route.component} path={route.path} />)}
