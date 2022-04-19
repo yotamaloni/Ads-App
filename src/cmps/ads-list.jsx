@@ -7,8 +7,8 @@ export const AdsList = (props) => {
         <section className="ads-container">
             <ul className="clean-list ads">
                 <li className="flex justify-between align-center">
-                    <div onClick={() => props.onUpdateSortBy('domain')}>Domain {type === 'domain' && <span> {(order === 1 ? '🠋' : '🠉')}</span>}</div>
-                    <div className="count-container" onClick={() => props.onUpdateSortBy('count')}>Count {type === 'count' && <span> {(order === 1 ? '🠋' : '🠉')}</span>}</div>
+                    <div onClick={() => props.onUpdateSortBy('domain')}>Domain {type === 'domain' && <span> {(order === 1 ? '⬇' : '⬆')}</span>}</div>
+                    <div className="count-container" onClick={() => props.onUpdateSortBy('count')}>Count {type === 'count' && <span> {(order === 1 ? '⬇' : '⬆')}</span>}</div>
                 </li>
                 {
                     props.ads.map(ad => {

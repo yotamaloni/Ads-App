@@ -60,20 +60,15 @@ export const AdsApp = (props) => {
     </div>
     return (
         <section className="ads-app">
-
             <SearchDomain onUpdateDomain={onUpdateDomain} />
-            {domain.ads.length > 0 ?
-                <React.Fragment>
-                    <DomainHeader domain={domain} />
-                    <SearchAds onUpdateFilterBy={onUpdateFilterBy} />
-                    <AdsList ads={domain.ads} onUpdateSortBy={onUpdateSortBy} sortBy={sortBy} />
-                </React.Fragment>
-                :
+            <DomainHeader domain={domain} />
+            <SearchAds onUpdateFilterBy={onUpdateFilterBy} />
+            <AdsList ads={domain.ads} onUpdateSortBy={onUpdateSortBy} sortBy={sortBy} />
+            {domain.ads.length === 0 &&
                 <div className="failure-msg">
-                    Failed to parse Ads.txt
+                    No advertisers to display
                 </div>
             }
-
         </section >
     )
 }
