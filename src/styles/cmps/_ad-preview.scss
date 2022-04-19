@@ -4,9 +4,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
 
     .count-container {
         width: 100px;
+    }
+
+    a {
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }

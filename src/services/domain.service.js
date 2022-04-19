@@ -15,7 +15,6 @@ async function query(domainName, filterBy, sortBy) {
     sortBy,
   };
   const domain = await httpService.get(`domain/${domainName}`, { data });
-  // if (!filterBy) _saveCurrDomain(domain);
   return domain;
 }
 

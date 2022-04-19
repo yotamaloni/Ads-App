@@ -11,7 +11,6 @@ import { PagesList } from "../cmps/page-list.jsx"
 import CircularIndeterminate from '../cmps/loader.jsx'
 
 
-
 export const AdsApp = (props) => {
     const history = useHistory()
 
@@ -33,7 +32,8 @@ export const AdsApp = (props) => {
 
     const updateDomain = async (domainName) => {
         const UpdatedFilterBy = { title: null, currPage: 1 }
-        const domain = await domainService.query(domainName, filterBy, sortBy)
+        setFilterBy(UpdatedFilterBy)
+        const domain = await domainService.query(domainName, UpdatedFilterBy, sortBy)
         setDomain(domain)
         history.push(`/domain/${domainName}`)
     }
@@ -45,7 +45,7 @@ export const AdsApp = (props) => {
             updatedFilterBy = { title: value, currPage }
         } else if (field === 'currPage') {
             const { title } = filterBy
-            updatedFilterBy = { currPage: value, title }
+            updatedFilterBy = { title, currPage: value }
         }
         setFilterBy(updatedFilterBy)
         const domainFiltered = await domainService.query(domain.name, updatedFilterBy, sortBy)
@@ -62,9 +62,11 @@ export const AdsApp = (props) => {
         const domainSorted = await domainService.query(domain.name, filterBy, newSortBy)
         setDomain(domainSorted)
     }
+
     if (!domain || isLoading) return <div className='loader-page'>
         <CircularIndeterminate />
     </div>
+
     return (
         <section className="ads-app">
             <SearchDomain onUpdateDomain={onUpdateDomain} />

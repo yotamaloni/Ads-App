@@ -19,7 +19,7 @@ Clean code
 
 Comfortable and elegant design
 
-Finish all the bonuses of the Home Assignment
+Finish all the bonuses of the Home Assignment & add features like paging
 
 
 ## How to run:
