@@ -6,9 +6,9 @@ export const AppHome = () => {
     return (
         <section className="app-home">
             <div className="txt-container">
-                <h1>ADS APP helps you to find what you want</h1>
-                <p>Have you ever wondered what the number of advertisers of a particular site is and did not know how to get it?
-                    With ADS APP flexion you can achieve this!
+                <h1>ADS APP helps you to find what you want.</h1>
+                <p>Have you ever wondered what the number of advertisers of a particular site is... and did not know how to get it?
+                    With ADS APP you can achieve this!
                 </p>
                 <Link to='/domain/msn.com' >
                     <button> START</button>

@@ -1,0 +1,39 @@
+.page-list-container {
+    margin-top: 10px;
+    font-size: 1.1em;
+
+    p {
+        margin: 0 10px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 10px;
+
+        flex-wrap: wrap;
+
+        >* {
+            width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            border-radius: 3px;
+
+            &:hover {
+                background-color: lightblue;
+            }
+        }
+
+        .curr-page {
+            font-weight: 700;
+            color: red;
+        }
+    }
+}

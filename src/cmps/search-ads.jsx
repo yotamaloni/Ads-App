@@ -4,7 +4,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 export const SearchAds = (props) => {
 
     const onSubmitAds = ({ adsName }) => {
-        props.onUpdateFilterBy(adsName)
+        props.onUpdateFilterBy('title', adsName)
     }
     const [register] = useFormRegister({
         model: '',

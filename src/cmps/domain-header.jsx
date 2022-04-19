@@ -6,7 +6,7 @@ export const DomainHeader = (props) => {
     return (
         <section className="domain-header flex justify-between">
             <div>Domain: <span>{domain.name}</span></div>
-            <div>Total advertisers: <span>{domain.ads.length}</span></div>
+            <div>Total advertisers: <span>{domain.totalAds}</span></div>
             <div>Parse time: <span>{domain.parseTime}ms</span></div>
             <div className="actions-container">
                 <SaveAction domain={domain} />

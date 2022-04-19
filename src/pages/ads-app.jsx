@@ -7,6 +7,7 @@ import { SearchDomain } from "../cmps/search-domain.jsx"
 import { DomainHeader } from "../cmps/domain-header.jsx"
 import { SearchAds } from "../cmps/search-ads.jsx"
 import { AdsList } from "../cmps/ads-list.jsx"
+import { PagesList } from "../cmps/page-list.jsx"
 import CircularIndeterminate from '../cmps/loader.jsx'
 
 
@@ -15,7 +16,7 @@ export const AdsApp = (props) => {
     const history = useHistory()
 
     const [domain, setDomain] = useState(null)
-    const [filterBy, setFilterBy] = useState(null)
+    const [filterBy, setFilterBy] = useState({ title: null, currPage: 1 })
     const [sortBy, setSortBy] = useState({ type: 'count', order: 1 })
     const [isLoading, setLoading] = useState(false)
 
@@ -31,16 +32,26 @@ export const AdsApp = (props) => {
     }
 
     const updateDomain = async (domainName) => {
+        const UpdatedFilterBy = { title: null, currPage: 1 }
         const domain = await domainService.query(domainName, filterBy, sortBy)
         setDomain(domain)
         history.push(`/domain/${domainName}`)
     }
 
-    const onUpdateFilterBy = async (adsTitle) => {
-        let filterBy
-        if (adsTitle) filterBy = { title: adsTitle }
-        else filterBy = null
-        const domainFiltered = await domainService.query(domain.name, filterBy, sortBy)
+    const onUpdateFilterBy = async (field, value) => {
+        let updatedFilterBy
+        if (field === 'title') {
+            const { currPage } = filterBy
+            updatedFilterBy = { title: value, currPage }
+        } else if (field === 'currPage') {
+            const { title } = filterBy
+            updatedFilterBy = { currPage: value, title }
+        }
+        setFilterBy(updatedFilterBy)
+        console.log("🟡 ~ updatedFilterBy", updatedFilterBy)
+        // if (adsTitle) filterBy = { title: adsTitle, currPage }
+        // else filterBy = null
+        const domainFiltered = await domainService.query(domain.name, updatedFilterBy, sortBy)
         setDomain(domainFiltered)
     }
 
@@ -54,7 +65,6 @@ export const AdsApp = (props) => {
         const domainSorted = await domainService.query(domain.name, filterBy, newSortBy)
         setDomain(domainSorted)
     }
-
     if (!domain || isLoading) return <div className='loader-page'>
         <CircularIndeterminate />
     </div>
@@ -64,6 +74,7 @@ export const AdsApp = (props) => {
             <DomainHeader domain={domain} />
             <SearchAds onUpdateFilterBy={onUpdateFilterBy} />
             <AdsList ads={domain.ads} onUpdateSortBy={onUpdateSortBy} sortBy={sortBy} />
+            <PagesList domain={domain} onUpdateFilterBy={onUpdateFilterBy} currPage={filterBy.currPage} />
             {domain.ads.length === 0 &&
                 <div className="failure-msg">
                     No advertisers to display
