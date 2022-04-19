@@ -1,6 +1,6 @@
 # Ads App - Front End Section
 
-## Author: Yotam Aloni
+## Author: Yotam Aloni, For: VIDAZOO
 
 Theologies used:
 
@@ -12,7 +12,6 @@ React Router
 
 SASS
 
-## The app was built for VIDAZOO
 
 ## What i tried to do
 

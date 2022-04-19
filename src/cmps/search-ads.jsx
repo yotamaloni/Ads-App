@@ -1,4 +1,5 @@
 import { useFormRegister } from '../hooks/useFormRegister'
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 export const SearchAds = (props) => {
 
@@ -15,11 +16,10 @@ export const SearchAds = (props) => {
 
     return (
         <section className="search-ads form-container">
-            <form {...formProps} onSubmit={(ev) => ev.preventDefault()} >
-                <label>
-                    <input  {...register('adsName', undefined, 'Search for ads')}
-                    />
-                </label>
+            <form {...formProps} onSubmit={(ev) => ev.preventDefault()} className="flex" >
+                <SearchOutlinedIcon className="clickable" />
+                <input required {...register('adsName', undefined, 'Search for ads...')}
+                />
             </form>
         </section>
     )

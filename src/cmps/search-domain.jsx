@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 import { useFormRegister } from '../hooks/useFormRegister'
 
 export const SearchDomain = (props) => {
+    const inputRef = useRef();
+    useEffect(() => {
+        inputRef.current.focus()
+    }, [])
 
     const onDomainChange = ({ domain }) => {
         setDomain(domain)
@@ -26,7 +30,7 @@ export const SearchDomain = (props) => {
         <section className="search-domain form-container">
             <form {...formProps} onSubmit={onSubmitForm} className="flex">
                 <SearchOutlinedIcon onClick={onSubmitForm} className="clickable" />
-                <input required {...register('domain', undefined, 'Enter domain name...(e.g. msn.com)')}
+                <input ref={inputRef} required {...register('domain', undefined, 'Enter domain name...(e.g. msn.com)')}
                 />
             </form>
         </section>
