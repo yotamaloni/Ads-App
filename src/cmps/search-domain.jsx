@@ -25,7 +25,7 @@ export const SearchDomain = (props) => {
     return (
         <section className="search-domain form-container">
             <form {...formProps} onSubmit={onSubmitForm} className="flex">
-                <SearchOutlinedIcon onClick={onSubmitForm}  className="clickable"/>
+                <SearchOutlinedIcon onClick={onSubmitForm} className="clickable" />
                 <input required {...register('domain', undefined, 'Enter domain name...(e.g. msn.com)')}
                 />
             </form>
