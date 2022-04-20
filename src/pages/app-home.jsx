@@ -7,11 +7,14 @@ export const AppHome = () => {
             <div className="txt-container">
                 <h1>ADS APP helps you to find what you want.</h1>
                 <p>Have you ever wondered what the number of advertisers of a particular site is... and did not know how to get it?
-                    With ADS APP you can achieve this!
+                    <br></br>
+                    No problem, With ADS APP you can achieve this!
                 </p>
-                <Link to='/domain/msn.com' >
-                    <button> START</button>
-                </Link>
+                <div className='link-container'>
+                    <Link to='/domain/msn.com' >
+                        <button> START</button>
+                    </Link>
+                </div>
             </div>
             <div className="img-container">
                 <img src={IMG_URL} />

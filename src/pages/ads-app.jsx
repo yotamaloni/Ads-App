@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom'
 
 import { domainService } from '../services/domain.service'
+import { utilService } from '../services/util.service'
 
 import { SearchDomain } from "../cmps/search-domain.jsx"
 import { DomainHeader } from "../cmps/domain-header.jsx"
@@ -28,6 +29,8 @@ export const AdsApp = (props) => {
 
     //Update the domain after getting new domain name
     const updateDomain = async (domainName) => {
+        domainName = utilService.getCleanUrl(domainName)
+        if (!domainName) return
         setLoading(true)
         const UpdatedFilterBy = { title: null, currPage: 1 }
         setFilterBy(UpdatedFilterBy)

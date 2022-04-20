@@ -1,5 +1,6 @@
 export const utilService = {
   makeId,
+  getCleanUrl,
 };
 
 function makeId(length = 6) {
@@ -12,5 +13,18 @@ function makeId(length = 6) {
   }
 
   return txt;
+}
+
+//Validate the name of the domain
+function getCleanUrl(url) {
+  const possibles = ["https://www.", "http://www.", "www.", "https", "http"];
+  let cleanUrl = url;
+  const possible = possibles.find((currPossible) =>
+    url.startsWith(currPossible)
+  );
+  if (possible) {
+    cleanUrl = url.substring(possible.length, url.length);
+  }
+  return cleanUrl;
 }
 

@@ -11,15 +11,6 @@ export const httpService = {
   get(endpoint, data) {
     return ajax(endpoint, "GET", data);
   },
-  post(endpoint, data) {
-    return ajax(endpoint, "POST", data);
-  },
-  put(endpoint, data) {
-    return ajax(endpoint, "PUT", data);
-  },
-  delete(endpoint, data) {
-    return ajax(endpoint, "DELETE", data);
-  },
 };
 
 async function ajax(endpoint, method = "GET", data = null) {
@@ -28,7 +19,7 @@ async function ajax(endpoint, method = "GET", data = null) {
       url: `${BASE_URL}${endpoint}`,
       method,
       data,
-      params: method === "GET" ? data : null,
+      params: data,
     });
     return res.data;
   } catch (err) {

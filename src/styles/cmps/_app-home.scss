@@ -1,13 +1,24 @@
 .app-home {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
     margin-bottom: 10px;
-    max-width: 500px;
-    min-width: 250px;
+    flex-wrap: wrap;
+    justify-content: center;
+    // max-width: 500px;
+    // min-width: 250px;
 
     .txt-container {
-        width: 100%;
+        max-width: 500px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        >* {
+            text-align: center;
+        }
+
+        h1 {}
 
         p {
             width: 100%;
@@ -17,18 +28,21 @@
             font-size: 1rem;
         }
 
-        button {
-            width: 100px;
-            padding: 0;
-            margin: 0;
-            font-weight: 700;
+        .link-container {
+            button {
+                width: 100px;
+                padding: 0;
+                margin: 0;
+                font-weight: 700;
 
+            }
         }
+
     }
 
 
     .img-container {
-        width: 100%;
+        max-width: 500px;
 
         img {
             width: 100%;
