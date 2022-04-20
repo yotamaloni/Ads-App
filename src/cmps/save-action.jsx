@@ -7,7 +7,7 @@ export const SaveAction = (props) => {
     //Preparing the object to display in file
     delete domainToDownload.adsToDisplay
     delete domainToDownload.maxItemsInPage
-    
+
     const csvData = downloadService.getCsvData(domainToDownload)
 
     const downloadJsonFile = async () => {
@@ -19,7 +19,7 @@ export const SaveAction = (props) => {
             Download As:
             <button className="download-btn" onClick={downloadJsonFile}>JSON</button>
             <button className="download-btn">
-                <CSVLink className="clean-link" data={csvData}>CSV</CSVLink>
+                <CSVLink className="clean-link" data={csvData} filename={domainToDownload.name + '.csv'}>CSV</CSVLink>
             </button>
         </section>
     )

@@ -18,7 +18,7 @@ export const SearchAds = (props) => {
         <section className="search-ads form-container">
             <form {...formProps} onSubmit={(ev) => ev.preventDefault()} className="flex" >
                 <SearchOutlinedIcon className="clickable" />
-                <input required {...register('adsName', undefined, 'Search for ads...')}
+                <input required {...register('adsName', undefined, 'Search for advertisers...')}
                 />
             </form>
         </section>

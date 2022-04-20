@@ -18,13 +18,12 @@ function makeId(length = 6) {
 //Validate the name of the domain
 function getCleanUrl(url) {
   const possibles = ["https://www.", "http://www.", "www.", "https", "http"];
-  let cleanUrl = url;
+  let cleanUrl = url.toLowerCase();
   const possible = possibles.find((currPossible) =>
-    url.startsWith(currPossible)
+    cleanUrl.startsWith(currPossible)
   );
   if (possible) {
-    cleanUrl = url.substring(possible.length, url.length);
+    cleanUrl = cleanUrl.substring(possible.length, cleanUrl.length);
   }
   return cleanUrl;
 }
-
