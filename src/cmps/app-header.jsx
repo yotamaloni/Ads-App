@@ -8,9 +8,6 @@ export function AppHeader() {
                 |
                 <NavLink activeClassName="selected" className="clean-link" exact to='/domain/msn.com'>ADVERTISERS</NavLink>
             </div>
-            {/* <Link to='/' className='title-container clean-link'>
-                Ads.txt Crawler
-            </Link> */}
         </section>
     )
 }

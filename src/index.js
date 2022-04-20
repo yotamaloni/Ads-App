@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { RootCmp } from "./root-cpm.jsx";
-// import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 import "./styles/styles.scss";
@@ -16,5 +15,5 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// reportWebVitals();
+//Register PWA
 serviceWorkerRegistration.register();

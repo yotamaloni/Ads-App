@@ -9,20 +9,20 @@ export const SearchDomain = (props) => {
         inputRef.current.focus()
     }, [])
 
-    const onDomainChange = ({ domain }) => {
-        setDomain(domain)
+    const onDomainNameChange = ({ domainName }) => {
+        setDomain(domainName)
     }
 
     const onSubmitForm = (ev) => {
-        if (!domain) return
+        if (!domainName) return
         ev.preventDefault()
-        props.onUpdateDomain(domain)
+        props.onUpdateDomain(domainName)
     }
-    const [domain, setDomain] = useState('')
+    const [domainName, setDomain] = useState('')
     const [register] = useFormRegister({
         model: '',
         type: '',
-    }, onDomainChange)
+    }, onDomainNameChange)
 
     const formProps = { className: 'search-domain-form' }
 
@@ -30,7 +30,7 @@ export const SearchDomain = (props) => {
         <section className="search-domain form-container">
             <form {...formProps} onSubmit={onSubmitForm} className="flex">
                 <SearchOutlinedIcon onClick={onSubmitForm} className="clickable" />
-                <input ref={inputRef} required {...register('domain', undefined, 'Enter domain name...(e.g. msn.com)')}
+                <input ref={inputRef} required {...register('domainName', undefined, 'Enter domain name...(e.g. msn.com)')}
                 />
             </form>
         </section>

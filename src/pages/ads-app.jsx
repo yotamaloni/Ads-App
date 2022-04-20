@@ -12,8 +12,10 @@ import CircularIndeterminate from '../cmps/loader.jsx'
 
 
 export const AdsApp = (props) => {
+
     const history = useHistory()
 
+    //Define vars with hooks
     const [domain, setDomain] = useState(null)
     const [filterBy, setFilterBy] = useState({ title: null, currPage: 1 })
     const [sortBy, setSortBy] = useState({ type: 'count', order: 1 })
@@ -21,21 +23,20 @@ export const AdsApp = (props) => {
 
     useEffect(() => {
         const { name } = props.match.params;
-        onUpdateDomain(name)
+        updateDomain(name)
     }, [])
 
-    const onUpdateDomain = async (domainName) => {
-        setLoading(true)
-        await updateDomain(domainName)
-        setLoading(false)
-    }
-
+    //Update the domain after getting new domain name
     const updateDomain = async (domainName) => {
+        setLoading(true)
         const UpdatedFilterBy = { title: null, currPage: 1 }
         setFilterBy(UpdatedFilterBy)
-        const domain = await domainService.query(domainName, UpdatedFilterBy, sortBy)
+        const updatedSortBy = { type: 'count', order: 1 }
+        setSortBy(updatedSortBy)
+        const domain = await domainService.query(domainName, UpdatedFilterBy, updatedSortBy)
         setDomain(domain)
         history.push(`/domain/${domainName}`)
+        setLoading(false)
     }
 
     const onUpdateFilterBy = async (field, value) => {
@@ -69,7 +70,7 @@ export const AdsApp = (props) => {
 
     return (
         <section className="ads-app">
-            <SearchDomain onUpdateDomain={onUpdateDomain} />
+            <SearchDomain onUpdateDomain={updateDomain} />
             <DomainHeader domain={domain} />
             <SearchAds onUpdateFilterBy={onUpdateFilterBy} />
             <AdsList ads={domain.adsToDisplay} onUpdateSortBy={onUpdateSortBy} sortBy={sortBy} />
