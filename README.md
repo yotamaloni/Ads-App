@@ -34,5 +34,5 @@ Link : "https://ads-app-vidazoo.herokuapp.com/"
 
 
 
-![Alt text] https://res.cloudinary.com/dnft2vfvz/image/upload/v1650447102/emtqadmal1zaqiwmfsmd.png
+![chart] https://res.cloudinary.com/dnft2vfvz/image/upload/v1650447102/emtqadmal1zaqiwmfsmd.png
 
