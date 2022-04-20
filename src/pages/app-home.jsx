@@ -5,7 +5,7 @@ export const AppHome = () => {
     return (
         <section className="app-home">
             <div className="txt-container">
-                <h1>ADS APP helps you to find what you want.</h1>
+                <h1>ADS APP helps you to find what you want..</h1>
                 <p>Have you ever wondered what the number of advertisers of a particular site is... and did not know how to get it?
                     <br></br>
                     No problem, With ADS APP you can achieve this!
